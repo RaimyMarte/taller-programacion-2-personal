@@ -2,7 +2,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { data } from '../domain/data/tasks';
 import type { AccentColor } from '../domain/models/Task';
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const location = useLocation();
 
   const colorMap: Record<AccentColor, { bg: string, shadow: string, border: string }> = {
@@ -14,9 +18,19 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="glass-panel w-80 m-4 p-6 flex flex-col gap-8 sticky top-4 h-[calc(100vh-2rem)] overflow-y-auto">
-      <div>
-        <Link to="/" className="flex items-center gap-3">
+    <aside className="glass-panel w-72 md:w-80 m-4 p-6 flex flex-col gap-8 sticky top-4 h-[calc(100vh-2rem)] overflow-y-auto relative">
+      
+      <button 
+        onClick={onClose}
+        className="md:hidden absolute top-6 right-6 p-2 text-slate-400 hover:text-white bg-white/5 rounded-lg border border-white/10"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div className="mt-2 md:mt-0">
+        <Link to="/" className="flex items-center gap-3" onClick={onClose}>
           <div className="w-8 h-8 rounded-md bg-gradient-to-br from-blue-500 to-green-500"></div>
           <h2 className="text-2xl font-bold m-0">Cubing Hub</h2>
         </Link>
@@ -25,7 +39,7 @@ export default function Sidebar() {
 
       <nav>
         <h4 className="text-slate-500 uppercase text-xs tracking-widest mb-4 font-bold">
-          Asignaciones
+          Categorías
         </h4>
         <ul className="flex flex-col gap-2">
           {Object.entries(data).map(([_, item]) => {
