@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# SpeedCubing Wiki 🧩
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna y estática dedicada al mundo del SpeedCubing, la evolución de los mecanismos magnéticos, y las competiciones oficiales de la WCA.
 
-Currently, two official plugins are available:
+Desarrollada como proyecto de plataforma de conocimiento centralizada utilizando tecnologías web modernas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Características
 
-## React Compiler
+- 📚 **Glosario Interactivo**: Definiciones de términos técnicos (CFOP, WCA, Look-ahead, etc.).
+- 📊 **Tablas Comparativas**: Análisis estructurado de los mejores cubos magnéticos del mercado.
+- 🗺️ **Mapas Visuales**: Flujos algorítmicos para aprender métodos avanzados.
+- 🏆 **Estudios de Caso**: Análisis de récords mundiales y eficiencia de movimientos.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- **[React](https://react.dev/)**
+- **[TypeScript](https://www.typescriptlang.org/)** - Para tipado estricto y modelos de dominio orientados a datos.
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Diseño estético moderno con modo oscuro y *glassmorphism*.
+- **[Vite](https://vitejs.dev/)** - Empaquetador extremadamente rápido.
+- **[React Router DOM](https://reactrouter.com/)** - Navegación tipo SPA usando `HashRouter` para compatibilidad total con servidores estáticos.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Despliegue en GitHub Pages
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Este proyecto está preconfigurado para compilarse y publicarse automáticamente en GitHub Pages usando el paquete `gh-pages`. Para subir la versión actual de tu código a producción, simplemente ejecuta:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Este comando generará la carpeta `dist` y la empujará automáticamente a la rama `gh-pages` de tu repositorio.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💻 Desarrollo Local
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Si deseas correr el proyecto en tu máquina local:
+
+```bash
+# 1. Instalar todas las dependencias
+npm install
+
+# 2. Iniciar el servidor de desarrollo local
+npm run dev
+
+# 3. Compilar para producción (opcional)
+npm run build
 ```
